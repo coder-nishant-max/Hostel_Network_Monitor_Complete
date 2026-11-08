@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Network Monitor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div>
+      <p class="eyebrow">NETWORK MANAGEMENT</p>
+      <h1>Hostel Network Monitor</h1>
+      <p class="subtitle">A simple dashboard for devices visible on your permitted local network.</p>
+    </div>
+    <span class="status-pill"><span class="dot"></span> Monitoring active</span>
+  </header>
+
+  <main class="container">
+    <section class="cards">
+      <article class="card"><p class="card-label">Detected Devices</p><h2 id="device-count">—</h2></article>
+      <article class="card"><p class="card-label">Your Local IP</p><h2 class="small-value" id="local-ip">Loading…</h2></article>
+      <article class="card"><p class="card-label">Default Gateway</p><h2 class="small-value" id="gateway">Loading…</h2></article>
+      <article class="card"><p class="card-label">Computer Name</p><h2 class="small-value" id="hostname">Loading…</h2></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div><h2>Connected / Detected Devices</h2><p>Entries discovered from the computer's ARP cache.</p></div>
+        <button id="refresh-button" onclick="refreshDashboard()">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>IP Address</th><th>MAC Address</th><th>Type</th><th>Hostname</th><th>Status</th></tr></thead>
+          <tbody id="device-table"><tr><td colspan="5">Loading devices…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="note">Note: ARP cache results may not show every device connected to the router. This dashboard does not scan or access devices.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading"><div><h2>Alerts</h2><p>Dashboard messages</p></div></div>
+      <div id="alerts-list" class="alerts">Loading alerts…</div>
+    </section>
+  </main>
+  <footer>Hostel Network Monitor · Student project</footer>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
